@@ -1,0 +1,22 @@
+{
+   "type": "mssql",
+   "host": "localhost",
+   "username": "sa",
+   "password": "Docker2408",
+   "database": "torreaptsc",
+   "port": 1434,
+   "entities": [
+      "src/entity/**/*.ts"
+   ],
+   "migrations": [
+      "src/database/migrations/**/*.ts"
+   ],
+   "options": {
+      "trustedConnection": true,
+      "enableArithAbort": true
+   },
+   "cli": {
+      "entitiesDir": "src/entity",
+      "migrationsDir": "src/database/migrations"
+   }
+}
