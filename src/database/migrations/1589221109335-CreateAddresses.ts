@@ -23,7 +23,11 @@ export default class CreateAddresses1589221109335
             type: 'uniqueidentifier',
           },
           {
-            name: 'street',
+            name: 'address1',
+            type: 'varchar(255)',
+          },
+          {
+            name: 'address2',
             type: 'varchar(255)',
           },
           {

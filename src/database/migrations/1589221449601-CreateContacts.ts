@@ -22,6 +22,10 @@ export default class CreateContacts1589221449601 implements MigrationInterface {
             type: 'uniqueidentifier',
           },
           {
+            name: 'name',
+            type: 'varchar',
+          },
+          {
             name: 'email',
             type: 'varchar',
           },
@@ -32,11 +36,10 @@ export default class CreateContacts1589221449601 implements MigrationInterface {
           {
             name: 'skype',
             type: 'varchar',
-            default: 0,
           },
           {
             name: 'main_contact',
-            type: 'varchar',
+            type: 'tinyint',
             default: 0,
           },
           {

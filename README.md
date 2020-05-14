@@ -2,13 +2,23 @@
 
 **RF** Funtional Requirements
 
+- Logon
 
-**RNF**
+**RNF** Non-Functional Requirements
 
+**BR** Business Rules
 
-**RN**
 
 # Mobile
 
+**RF** Funtional Requirements
 
-# Frontend
+- Logon
+
+**RNF** Non-Functional Requirements
+
+- store list in cache;
+
+**BR** Business Rules
+
+
