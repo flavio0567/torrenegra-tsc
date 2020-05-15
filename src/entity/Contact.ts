@@ -32,7 +32,7 @@ class Contact {
   phone: number;
 
   @Column()
-  skype: string;
+  other: string;
 
   @Column()
   main_contact: number;

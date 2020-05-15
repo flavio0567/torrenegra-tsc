@@ -34,7 +34,7 @@ export default class CreateContacts1589221449601 implements MigrationInterface {
             type: 'bigint',
           },
           {
-            name: 'skype',
+            name: 'other',
             type: 'varchar',
           },
           {
