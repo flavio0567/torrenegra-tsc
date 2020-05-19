@@ -6,17 +6,17 @@
    "database": "torreaptsc",
    "port": 1434,
    "entities": [
-      "src/entity/**/*.ts"
+      "src/modules/**/infra/typeorm/entities/*.ts"
    ],
    "migrations": [
-      "src/database/migrations/**/*.ts"
+      "src/shared/infra/typeorm/migrations/*.ts"
    ],
    "options": {
       "trustedConnection": true,
       "enableArithAbort": true
    },
    "cli": {
-      "entitiesDir": "src/entity",
-      "migrationsDir": "src/database/migrations"
+      "entitiesDir": "src/**/infra/typeorm/entities",
+      "migrationsDir": "src/shared/infra/typeorm/migrations"
    }
 }
