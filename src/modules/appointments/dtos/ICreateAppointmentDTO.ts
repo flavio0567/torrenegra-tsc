@@ -4,10 +4,10 @@ export default interface ICreateAppointmentDTO {
   expense_amount: number;
   expense_date: Date;
   expense_description: string;
-  expense_is_holiday: boolean;
-  expense_is_refundable: boolean;
-  end_date: Date;
-  start_date: Date;
+  expense_is_holiday: number;
+  expense_is_refundable: number;
+  end_date: Date | null;
+  start_date: Date | null;
   type: string;
   hourly_value: number;
 }

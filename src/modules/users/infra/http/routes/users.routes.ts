@@ -8,15 +8,15 @@ import UsersController from '../controllers/UsersController';
 const usersRouter = Router();
 const usersController = new UsersController();
 
-usersRouter.get('/', ensureAuthenticated, async (req, res) => {
+usersRouter.get('/:id', ensureAuthenticated, async (req, res) => {
   const { id } = req.params;
 
   const usersRepository = new UsersRepository();
-  const users = await usersRepository.findById(id);
+  const user = await usersRepository.findById(id);
 
-  // delete users.password_hash;
+  delete user?.password_hash;
 
-  return res.json(users);
+  return res.json(user);
 });
 
 usersRouter.post('/new', usersController.create);
