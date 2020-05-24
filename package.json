@@ -11,13 +11,16 @@
     "test": "jest"
   },
   "dependencies": {
+    "@types/nodemailer": "^6.4.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "date-fns": "^2.0.0-beta.5",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
+    "handlebars": "^4.7.6",
     "jsonwebtoken": "^8.5.1",
     "mssql": "^6.2.0",
+    "nodemailer": "^6.4.6",
     "reflect-metadata": "^0.1.13",
     "tsyringe": "^4.3.0",
     "typeorm": "^0.2.24",

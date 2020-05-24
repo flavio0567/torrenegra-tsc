@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import UsersRepository from '@modules/users/infra/typeorm/repositories/UserRepository';
+import UsersRepository from '@modules/users/infra/typeorm/repositories/UsersRepository';
 import ensureAuthenticated from '../middleware/ensureAuthenticated';
 
 import UsersController from '../controllers/UsersController';

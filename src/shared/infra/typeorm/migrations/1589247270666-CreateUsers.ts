@@ -13,6 +13,10 @@ export default class CreateUsers1589247270666 implements MigrationInterface {
             default: 'newid()',
           },
           {
+            name: 'avatar',
+            type: 'varchar',
+          },
+          {
             name: 'email',
             type: 'varchar',
             isUnique: true,

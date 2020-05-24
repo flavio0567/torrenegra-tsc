@@ -3,17 +3,20 @@ import AppError from '@shared/errors/AppError';
 
 import CreateUserService from './CreateUserService';
 import FakeHashProvider from '../providers/HashProvider/fakes/FakeHashProvider';
-import FakeUsersRepository from '../repositories/FakeUsersRepository';
+import FakeUsersRepository from '../repositories/fakes/FakeUsersRepository';
+
+let faseHashProvider: FakeHashProvider;
+let fakeUsersRepository: FakeUsersRepository;
+let createUser: CreateUserService;
 
 describe('CreateUser', () => {
-  it('should be able to create a new user', async () => {
-    const faseHashProvider = new FakeHashProvider();
-    const fakeUsersRepository = new FakeUsersRepository();
-    const createUser = new CreateUserService(
-      fakeUsersRepository,
-      faseHashProvider
-    );
+  beforeEach(() => {
+    faseHashProvider = new FakeHashProvider();
+    fakeUsersRepository = new FakeUsersRepository();
+    createUser = new CreateUserService(fakeUsersRepository, faseHashProvider);
+  });
 
+  it('should be able to create a new user', async () => {
     const user = await createUser.execute({
       first_name: 'Flavio ',
       last_name: 'Rocha',
@@ -29,13 +32,6 @@ describe('CreateUser', () => {
   });
 
   it('should not be able to create a duplicated email address', async () => {
-    const faseHashProvider = new FakeHashProvider();
-    const fakeUsersRepository = new FakeUsersRepository();
-    const createUser = new CreateUserService(
-      fakeUsersRepository,
-      faseHashProvider
-    );
-
     await createUser.execute({
       first_name: 'Flavio ',
       last_name: 'Rocha',
@@ -47,7 +43,7 @@ describe('CreateUser', () => {
       is_active: 0,
     });
 
-    expect(
+    await expect(
       createUser.execute({
         first_name: 'Flavio ',
         last_name: 'Rocha',

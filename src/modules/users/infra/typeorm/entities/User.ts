@@ -38,6 +38,9 @@ class User {
   @Column()
   is_active: number;
 
+  @Column()
+  avatar: string;
+
   @OneToMany(() => Appointment, appointment => appointment.provider)
   appointments: Appointment[];
 
