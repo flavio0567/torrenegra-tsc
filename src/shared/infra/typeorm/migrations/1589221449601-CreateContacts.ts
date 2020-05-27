@@ -20,6 +20,7 @@ export default class CreateContacts1589221449601 implements MigrationInterface {
           {
             name: 'client_id',
             type: 'uniqueidentifier',
+            default: 'newid()',
           },
           {
             name: 'name',
@@ -28,14 +29,17 @@ export default class CreateContacts1589221449601 implements MigrationInterface {
           {
             name: 'email',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'phone',
             type: 'bigint',
+            isNullable: true,
           },
           {
             name: 'other',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'main_contact',

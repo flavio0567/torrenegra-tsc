@@ -21,22 +21,27 @@ export default class CreateAppointments1589248231342
           {
             name: 'provider_id',
             type: 'uniqueidentifier',
+            default: 'newid()',
           },
           {
             name: 'project_id',
             type: 'uniqueidentifier',
+            default: 'newid()',
           },
           {
             name: 'expense_amount',
             type: 'decimal',
+            isNullable: true,
           },
           {
             name: 'expense_date',
             type: 'datetime2',
+            isNullable: true,
           },
           {
             name: 'expense_description',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'expense_is_holiday',
@@ -51,10 +56,12 @@ export default class CreateAppointments1589248231342
           {
             name: 'end_date',
             type: 'datetime2',
+            isNullable: true,
           },
           {
             name: 'start_date',
             type: 'datetime2',
+            isNullable: true,
           },
           {
             name: 'type',
@@ -63,6 +70,7 @@ export default class CreateAppointments1589248231342
           {
             name: 'hourly_value',
             type: 'decimal',
+            isNullable: true,
           },
           {
             name: 'created_at',

@@ -19,14 +19,14 @@ class Appointment {
   @Column()
   provider_id: string;
 
-  @ManyToOne(() => User)
+  @ManyToOne(() => User, user => user.appointments)
   @JoinColumn({ name: 'provider_id' })
   provider: User;
 
   @Column()
   project_id: string;
 
-  @ManyToOne(() => Project)
+  @ManyToOne(() => Project, project => project.appointments)
   @JoinColumn({ name: 'project_id' })
   project: Project;
 

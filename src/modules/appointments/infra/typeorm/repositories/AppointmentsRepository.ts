@@ -12,17 +12,24 @@ class AppointmentsRepository implements IAppointmentsRepository {
     this.ormRepository = getRepository(Appointment);
   }
 
-  public async findByDate(date: Date): Promise<Appointment | undefined> {
+  public async findAllAppointments(): Promise<Appointment[] | null> {
+    const appointments = this.ormRepository.find();
+
+    return appointments || null;
+  }
+
+  public async findByDate(date: Date): Promise<Appointment | null> {
     const findAppointment = await this.ormRepository.findOne({
       where: { date },
     });
 
-    return findAppointment;
+    return findAppointment || null;
   }
 
   public async create({
-    project_id,
     provider_id,
+    project_id,
+    type,
     expense_amount,
     expense_date,
     expense_description,
@@ -30,12 +37,12 @@ class AppointmentsRepository implements IAppointmentsRepository {
     expense_is_refundable,
     end_date,
     start_date,
-    type,
     hourly_value,
   }: ICreateAppointmentDTO): Promise<Appointment> {
     const appointment = this.ormRepository.create({
-      project_id,
       provider_id,
+      project_id,
+      type,
       expense_amount,
       expense_date,
       expense_description,
@@ -43,7 +50,6 @@ class AppointmentsRepository implements IAppointmentsRepository {
       expense_is_refundable,
       end_date,
       start_date,
-      type,
       hourly_value,
     });
 

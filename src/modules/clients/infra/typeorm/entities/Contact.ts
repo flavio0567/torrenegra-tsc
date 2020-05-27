@@ -18,10 +18,6 @@ class Contact {
   @Column()
   client_id: string;
 
-  @ManyToOne(() => Client)
-  @JoinColumn({ name: 'client_id' })
-  client: Client;
-
   @Column()
   name: string;
 
@@ -36,6 +32,10 @@ class Contact {
 
   @Column()
   main_contact: number;
+
+  @ManyToOne(() => Client, client => client.contacts)
+  @JoinColumn({ name: 'client_id' })
+  client: Client;
 
   @CreateDateColumn()
   created_at: Date;

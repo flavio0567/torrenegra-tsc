@@ -17,6 +17,9 @@ class Client {
   id: string;
 
   @Column()
+  cnpj: string;
+
+  @Column()
   corporate_name: string;
 
   @Column()
@@ -26,7 +29,7 @@ class Client {
   hourly_cost: number;
 
   @Column()
-  deadline_payment: number;
+  payment_deadline: number;
 
   @OneToMany(() => Address, address => address.client)
   addresses: Address[];

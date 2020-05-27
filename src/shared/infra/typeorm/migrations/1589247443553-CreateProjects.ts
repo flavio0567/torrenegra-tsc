@@ -20,6 +20,7 @@ export default class CreateProjects1589247443553 implements MigrationInterface {
           {
             name: 'client_id',
             type: 'uniqueidentifier',
+            default: 'newid()',
           },
           {
             name: 'code',
@@ -37,6 +38,7 @@ export default class CreateProjects1589247443553 implements MigrationInterface {
           {
             name: 'hour_ihm',
             type: 'int',
+            isNullable: true,
           },
           {
             name: 'is_blocked',
@@ -46,27 +48,31 @@ export default class CreateProjects1589247443553 implements MigrationInterface {
           {
             name: 'order_code',
             type: 'varchar',
-            default: 0,
           },
           {
             name: 'order_value',
             type: 'decimal',
+            isNullable: true,
           },
           {
             name: 'status',
             type: 'tinyint',
+            default: 0,
           },
           {
             name: 'value_third_party',
             type: 'decimal',
+            isNullable: true,
           },
           {
             name: 'value_material',
             type: 'decimal',
+            isNullable: true,
           },
           {
             name: 'value_travel',
             type: 'decimal',
+            isNullable: true,
           },
           {
             name: 'created_at',

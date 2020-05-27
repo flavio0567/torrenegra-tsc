@@ -21,6 +21,7 @@ export default class CreateAddresses1589221109335
           {
             name: 'client_id',
             type: 'uniqueidentifier',
+            default: 'newid()',
           },
           {
             name: 'address1',
@@ -29,6 +30,7 @@ export default class CreateAddresses1589221109335
           {
             name: 'address2',
             type: 'varchar(255)',
+            isNullable: true,
           },
           {
             name: 'city',

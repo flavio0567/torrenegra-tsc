@@ -12,7 +12,9 @@ let createUser: CreateUserService;
 describe('CreateUser', () => {
   beforeEach(() => {
     faseHashProvider = new FakeHashProvider();
+
     fakeUsersRepository = new FakeUsersRepository();
+
     createUser = new CreateUserService(fakeUsersRepository, faseHashProvider);
   });
 

@@ -20,11 +20,11 @@ class Project {
   @Column()
   client_id: string;
 
-  @ManyToOne(() => Client)
+  @ManyToOne(() => Client, client => client.projects)
   @JoinColumn({ name: 'client_id' })
   client: Client[];
 
-  @OneToMany(() => Appointment, appointment => appointment.project)
+  @OneToMany(() => Appointment, appointment => appointment.provider)
   appointments: Appointment[];
 
   @Column()

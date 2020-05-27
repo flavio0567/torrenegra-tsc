@@ -14,13 +14,14 @@ export default class CreateUserTokens1590110491292
             default: 'newid()',
           },
           {
-            name: 'token',
+            name: 'user_id',
             type: 'uniqueidentifier',
             default: 'newid()',
           },
           {
-            name: 'user_id',
+            name: 'token',
             type: 'uniqueidentifier',
+            default: 'newid()',
           },
           {
             name: 'created_at',

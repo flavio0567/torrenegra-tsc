@@ -72,10 +72,6 @@ class UpdateProfileService {
       user.password_hash = await this.hashProvider.generateHash(password);
     }
 
-    user.first_name = first_name;
-    user.last_name = last_name;
-    user.email = email;
-
     return this.usersRepository.save(user);
   }
 }

@@ -18,10 +18,6 @@ class Address {
   @Column()
   client_id: string;
 
-  @ManyToOne(() => Client)
-  @JoinColumn({ name: 'client_id' })
-  client: Client;
-
   @Column()
   street_1: string;
 
@@ -36,6 +32,10 @@ class Address {
 
   @Column()
   zip_code: string;
+
+  @ManyToOne(() => Client, client => client.addresses)
+  @JoinColumn({ name: 'client_id' })
+  client: Client;
 
   @CreateDateColumn()
   created_at: Date;
