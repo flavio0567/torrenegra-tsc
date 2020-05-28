@@ -12,10 +12,10 @@ class AppointmentsRepository implements IAppointmentsRepository {
     this.ormRepository = getRepository(Appointment);
   }
 
-  public async findAllAppointments(): Promise<Appointment[] | null> {
+  public async findAllAppointments(): Promise<Appointment[] | undefined> {
     const appointments = this.ormRepository.find();
 
-    return appointments || null;
+    return appointments || undefined;
   }
 
   public async findByDate(date: Date): Promise<Appointment | null> {

@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { celebrate, Joi, Segments } from 'celebrate';
 
 import ClientsRepository from '@modules/clients/infra/typeorm/repositories/ClientsRepository';
 import ensureAuthenticated from '@modules/users/infra/http/middleware/ensureAuthenticated';
@@ -26,10 +27,43 @@ clientsRouter.get('/:client_id', async (req, res) => {
   return res.json(client);
 });
 
-clientsRouter.post('/', clientsController.create);
+clientsRouter.post(
+  '/',
+  celebrate({
+    [Segments.BODY]: {
+      cnpj: Joi.string().required(),
+      corporate_name: Joi.string().required(),
+      trading_name: Joi.string().required(),
+      hourly_cost: Joi.number().required(),
+      payment_deadline: Joi.number().required(),
+    },
+  }),
+  clientsController.create
+);
 
-clientsRouter.put('/:client_id', clientsController.update);
+clientsRouter.put(
+  '/:client_id',
+  celebrate({
+    [Segments.BODY]: {
+      cnpj: Joi.string().required(),
+      corporate_name: Joi.string().required(),
+      trading_name: Joi.string().required(),
+      hourly_cost: Joi.number().required(),
+      payment_deadline: Joi.number().required(),
+    },
+    [Segments.PARAMS]: { client_id: Joi.string().required() },
+  }),
+  clientsController.update
+);
 
-clientsRouter.delete('/:client_id', clientsController.delete);
+clientsRouter.delete(
+  '/:client_id',
+  celebrate({
+    [Segments.PARAMS]: {
+      [Segments.PARAMS]: { client_id: Joi.string().required() },
+    },
+  }),
+  clientsController.delete
+);
 
 export default clientsRouter;

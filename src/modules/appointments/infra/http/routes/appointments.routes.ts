@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { celebrate, Joi, Segments } from 'celebrate';
 
 import appointmentsRepository from '@modules/appointments/infra/typeorm/repositories/AppointmentsRepository';
 import ensureAuthenticated from '@modules/users/infra/http/middleware/ensureAuthenticated';
@@ -15,7 +16,25 @@ appointmentsRouter.get('/', async (req, res) => {
   return res.json(appointments);
 });
 
-appointmentsRouter.post('/', appointmentsController.create);
+appointmentsRouter.post(
+  '/',
+  celebrate({
+    [Segments.BODY]: Joi.object().keys({
+      provider_id: Joi.string().uuid().required(),
+      project_id: Joi.string().uuid().required(),
+      type: Joi.string().required(),
+      expense_amount: Joi.number(),
+      expense_date: Joi.date(),
+      expense_description: Joi.string(),
+      expense_is_holiday: Joi.number().default(0),
+      expense_is_refundable: Joi.number().default(0),
+      end_date: Joi.date(),
+      start_date: Joi.date(),
+      hourly_value: Joi.number(),
+    }),
+  }),
+  appointmentsController.create
+);
 
 appointmentsRouter.put('/close/:id', (req, res) =>
   res.json({ message: 'close appointment' })

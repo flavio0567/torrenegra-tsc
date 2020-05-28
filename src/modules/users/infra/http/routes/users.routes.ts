@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { celebrate, Joi, Segments } from 'celebrate';
 
 import UsersRepository from '@modules/users/infra/typeorm/repositories/UsersRepository';
 import ensureAuthenticated from '../middleware/ensureAuthenticated';
@@ -8,17 +9,39 @@ import UsersController from '../controllers/UsersController';
 const usersRouter = Router();
 const usersController = new UsersController();
 
-usersRouter.get('/:id', ensureAuthenticated, async (req, res) => {
-  const { id } = req.params;
+usersRouter.use(ensureAuthenticated);
 
-  const usersRepository = new UsersRepository();
-  const user = await usersRepository.findById(id);
+usersRouter.get(
+  '/:id',
+  celebrate({ [Segments.PARAMS]: { id: Joi.string().required() } }),
+  async (req, res) => {
+    const { id } = req.params;
 
-  delete user?.password_hash;
+    const usersRepository = new UsersRepository();
+    const user = await usersRepository.findById(id);
 
-  return res.json(user);
-});
+    delete user?.password_hash;
 
-usersRouter.post('/new', usersController.create);
+    return res.json(user);
+  }
+);
+
+usersRouter.post(
+  '/',
+  celebrate({
+    [Segments.BODY]: {
+      first_name: Joi.string().required(),
+      last_name: Joi.string().required(),
+      position: Joi.string().required(),
+      hourly_cost: Joi.number().required(),
+      email: Joi.string().email().required(),
+      password: Joi.string().required(),
+      password_confirmation: Joi.string().required().valid(Joi.ref('password')),
+      is_admin: Joi.number().default(0),
+      is_active: Joi.number().default(0),
+    },
+  }),
+  usersController.create
+);
 
 export default usersRouter;
