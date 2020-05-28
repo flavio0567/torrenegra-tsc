@@ -15,9 +15,9 @@ class FakeClientsRepository implements IClientsRepository {
   }
 
   public async findById(id: string): Promise<Client | undefined> {
-    const findByIdClient = this.clients.find(client => client.id === id);
+    const findClientById = this.clients.find(client => client.id === id);
 
-    return findByIdClient;
+    return findClientById;
   }
 
   public async findByCnpj(cnpj: string): Promise<Client | undefined> {
@@ -36,6 +36,12 @@ class FakeClientsRepository implements IClientsRepository {
     return client;
   }
 
+  public async delete(client_id: string): Promise<void> {
+    const findIndex = this.clients.findIndex(client => client.id === client_id);
+
+    this.clients.splice(findIndex, 0);
+  }
+
   public async save(client: Client): Promise<Client> {
     const findIndex = this.clients.findIndex(
       saveClient => saveClient.id === client.id
@@ -44,12 +50,6 @@ class FakeClientsRepository implements IClientsRepository {
     this.clients[findIndex] = client;
 
     return client;
-  }
-
-  public async delete(client_id: string): Promise<void> {
-    const findIndex = this.clients.findIndex(client => client.id === client_id);
-
-    this.clients.splice(findIndex, 0);
   }
 }
 

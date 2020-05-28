@@ -37,12 +37,12 @@ export default class ClientsController {
       payment_deadline,
     } = req.body;
 
-    const { id } = req.params;
+    const { client_id } = req.params;
 
     const updatedClient = container.resolve(UpdateClientService);
 
     const client = await updatedClient.execute({
-      client_id: id,
+      client_id,
       cnpj,
       corporate_name,
       trading_name,
@@ -54,12 +54,12 @@ export default class ClientsController {
   }
 
   public async delete(req: Request, res: Response): Promise<Response> {
-    const { id } = req.params;
+    const { client_id } = req.params;
 
     const deletedClient = container.resolve(DeleteClientService);
 
     await deletedClient.execute({
-      client_id: id,
+      client_id,
     });
 
     return res.json();

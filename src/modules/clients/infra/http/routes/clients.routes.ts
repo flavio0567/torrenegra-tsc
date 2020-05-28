@@ -17,7 +17,7 @@ clientsRouter.get('/', async (req, res) => {
   return res.json(clients);
 });
 
-clientsRouter.get('/:id', async (req, res) => {
+clientsRouter.get('/:client_id', async (req, res) => {
   const { id } = req.params;
 
   const clientsRepository = new ClientsRepository();
@@ -28,8 +28,8 @@ clientsRouter.get('/:id', async (req, res) => {
 
 clientsRouter.post('/', clientsController.create);
 
-clientsRouter.put('/:id', clientsController.update);
+clientsRouter.put('/:client_id', clientsController.update);
 
-clientsRouter.delete('/:id', clientsController.delete);
+clientsRouter.delete('/:client_id', clientsController.delete);
 
 export default clientsRouter;

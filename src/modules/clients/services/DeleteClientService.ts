@@ -21,7 +21,7 @@ class DeleteClientService {
       throw new AppError('Client not found.');
     }
 
-    this.clientsRepository.delete(client.id);
+    await this.clientsRepository.delete(client_id);
   }
 }
 

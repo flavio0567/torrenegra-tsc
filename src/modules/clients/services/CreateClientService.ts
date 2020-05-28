@@ -1,7 +1,8 @@
 import { injectable, inject } from 'tsyringe';
-
 import AppError from '@shared/errors/AppError';
+
 import IClientsRepository from '../repositories/IClientsRepository';
+
 import Client from '../infra/typeorm/entities/Client';
 
 interface IRequest {

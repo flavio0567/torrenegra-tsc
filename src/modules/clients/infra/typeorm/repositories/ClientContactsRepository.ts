@@ -12,6 +12,12 @@ class ClientContactsRepository implements IClientContactsRepository {
     this.ormRepository = getRepository(Contact);
   }
 
+  public async findAllContacts(): Promise<Contact[] | undefined> {
+    const contacts = await this.ormRepository.find();
+
+    return contacts || undefined;
+  }
+
   public async findById(id: string): Promise<Contact | undefined> {
     const findContact = await this.ormRepository.findOne(id);
 
@@ -38,6 +44,10 @@ class ClientContactsRepository implements IClientContactsRepository {
     await this.ormRepository.save(contact);
 
     return contact;
+  }
+
+  public async delete(id: string): Promise<void> {
+    await this.ormRepository.delete(id);
   }
 
   public async save(contact: Contact): Promise<Contact> {
