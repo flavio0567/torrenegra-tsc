@@ -6,7 +6,7 @@ import CreateClientService from './CreateClientService';
 let fakeClientsRepository: FakeClientsRepository;
 let createClient: CreateClientService;
 
-describe('UpdateProfileService', () => {
+describe('CreateClientService', () => {
   beforeEach(() => {
     fakeClientsRepository = new FakeClientsRepository();
 

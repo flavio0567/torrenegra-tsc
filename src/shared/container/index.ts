@@ -21,6 +21,9 @@ import ClientAddressesRepository from '@modules/clients/infra/typeorm/repositori
 import IAppointmentsRepository from '@modules/appointments/repositories/IAppointmentsRepository';
 import AppointmentsRepository from '@modules/appointments/infra/typeorm/repositories/AppointmentsRepository';
 
+import IProjectsRepository from '@modules/projects/repositories/IProjectsRepository';
+import ProjectsRepository from '@modules/projects/infra/typeorm/repositories/ProjectsRepository';
+
 container.registerSingleton<IUsersRepository>(
   'UsersRepository',
   UsersRepository
@@ -44,6 +47,11 @@ container.registerSingleton<IClientContactsRepository>(
 container.registerSingleton<IClientAddressesRepository>(
   'ClientAddressesRepository',
   ClientAddressesRepository
+);
+
+container.registerSingleton<IProjectsRepository>(
+  'ProjectsRepository',
+  ProjectsRepository
 );
 
 container.registerSingleton<IAppointmentsRepository>(

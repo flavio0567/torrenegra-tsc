@@ -30,7 +30,7 @@ class CreateClientService {
     const checkClientExists = await this.clientsRepository.findByCnpj(cnpj);
 
     if (checkClientExists) {
-      throw new AppError('Cnpj already used.', 401);
+      throw new AppError('Client already exist.', 401);
     }
 
     const client = await this.clientsRepository.create({
