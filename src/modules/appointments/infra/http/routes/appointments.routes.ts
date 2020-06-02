@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { celebrate, Joi, Segments } from 'celebrate';
 
-import appointmentsRepository from '@modules/appointments/infra/typeorm/repositories/AppointmentsRepository';
+import AppointmentsRepository from '@modules/appointments/infra/typeorm/repositories/AppointmentsRepository';
 import ensureAuthenticated from '@modules/users/infra/http/middleware/ensureAuthenticated';
 import AppointmentsController from '../controllers/AppointmentsController';
 
@@ -11,7 +11,16 @@ const appointmentsController = new AppointmentsController();
 appointmentsRouter.use(ensureAuthenticated);
 
 appointmentsRouter.get('/', async (req, res) => {
-  const appointments = await appointmentsRepository.prototype.findAllAppointments();
+  const appointmentsRepository = new AppointmentsRepository();
+  const appointments = await appointmentsRepository.findAllAppointments();
+
+  return res.json(appointments);
+});
+
+appointmentsRouter.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  const appointmentsRepository = new AppointmentsRepository();
+  const appointments = await appointmentsRepository.findById(id);
 
   return res.json(appointments);
 });

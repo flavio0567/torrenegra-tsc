@@ -13,8 +13,8 @@ interface IRequest {
   expense_description: string;
   expense_is_holiday: number;
   expense_is_refundable: number;
-  end_date: Date | null;
-  start_date: Date | null;
+  end_date: Date;
+  start_date: Date;
   hourly_value: number;
 }
 

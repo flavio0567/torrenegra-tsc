@@ -7,6 +7,8 @@ import {
   OneToMany,
 } from 'typeorm';
 
+import { Exclude } from 'class-transformer';
+
 import Appointment from '@modules/appointments/infra/typeorm/entities/Appointment';
 
 @Entity('users')
@@ -30,6 +32,7 @@ class User {
   email: string;
 
   @Column()
+  @Exclude()
   password_hash: string;
 
   @Column()

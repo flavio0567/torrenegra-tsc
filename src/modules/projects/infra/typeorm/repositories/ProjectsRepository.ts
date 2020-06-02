@@ -13,7 +13,9 @@ class ProjectsRepository implements IProjectsRepository {
   }
 
   public async findAllProjects(): Promise<Project[] | undefined> {
-    const projects = await this.ormRepository.find();
+    const projects = await this.ormRepository.find({
+      relations: ['client'],
+    });
 
     return projects || undefined;
   }

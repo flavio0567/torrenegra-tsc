@@ -19,16 +19,16 @@ class Appointment {
   @Column()
   provider_id: string;
 
-  @ManyToOne(() => User, user => user.appointments)
+  @ManyToOne(() => User, provider => provider.appointments)
   @JoinColumn({ name: 'provider_id' })
-  provider: User;
+  provider: User[];
 
   @Column()
   project_id: string;
 
   @ManyToOne(() => Project, project => project.appointments)
   @JoinColumn({ name: 'project_id' })
-  project: Project;
+  project: Project[];
 
   @Column()
   expense_amount: number;
@@ -40,13 +40,13 @@ class Appointment {
   expense_description: string;
 
   @Column()
-  expense_is_refundable: boolean;
+  expense_is_refundable: number;
 
   @Column()
   end_date: Date;
 
   @Column()
-  expense_is_holiday: boolean;
+  expense_is_holiday: number;
 
   @Column()
   start_date: Date;
