@@ -24,11 +24,11 @@ export default class CreateAddresses1589221109335
             default: 'newid()',
           },
           {
-            name: 'address1',
+            name: 'street_1',
             type: 'varchar(255)',
           },
           {
-            name: 'address2',
+            name: 'street_2',
             type: 'varchar(255)',
             isNullable: true,
           },

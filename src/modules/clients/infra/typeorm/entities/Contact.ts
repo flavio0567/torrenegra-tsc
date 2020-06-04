@@ -24,7 +24,7 @@ class Contact {
   @Column()
   email: string;
 
-  @Column()
+  @Column({ type: 'bigint' })
   phone: number;
 
   @Column()

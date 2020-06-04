@@ -9,12 +9,12 @@ interface IRequest {
   project_id: string;
   type: string;
   expense_amount: number;
-  expense_date: Date;
+  expense_date: Date | null;
   expense_description: string;
   expense_is_holiday: number;
   expense_is_refundable: number;
-  end_date: Date;
-  start_date: Date;
+  end_date: Date | null;
+  start_date: Date | null;
   hourly_value: number;
 }
 

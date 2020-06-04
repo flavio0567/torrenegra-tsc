@@ -26,6 +26,14 @@ class FakeClientAddressesRepository implements IClientAddressesRepository {
     return address;
   }
 
+  public async delete(address_id: string): Promise<void> {
+    const findIndex = this.clientAddresses.findIndex(
+      address => address.id === address_id
+    );
+
+    this.clientAddresses.splice(findIndex, 0);
+  }
+
   public async save(address: Address): Promise<Address> {
     const findIndex = this.clientAddresses.findIndex(
       saveAddress => saveAddress.id === address.id

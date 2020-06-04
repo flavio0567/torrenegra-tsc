@@ -7,7 +7,9 @@ import DeleteClientContactService from '@modules/clients/services/DeleteClientCo
 
 export default class ClientContactController {
   public async create(req: Request, res: Response): Promise<Response> {
-    const { client_id, name, email, phone, other, main_contact } = req.body;
+    const { name, email, phone, other, main_contact } = req.body;
+
+    const { client_id } = req.params;
 
     const createClientContact = container.resolve(CreateClientContactService);
 
@@ -26,12 +28,12 @@ export default class ClientContactController {
   public async update(req: Request, res: Response): Promise<Response> {
     const { name, email, phone, other, main_contact } = req.body;
 
-    const { clientContact_id } = req.params;
+    const { id } = req.params;
 
     const updatedClientContact = container.resolve(UpdateClientContactService);
 
     const clientContact = await updatedClientContact.execute({
-      clientContact_id,
+      id,
       name,
       email,
       phone,
@@ -43,12 +45,12 @@ export default class ClientContactController {
   }
 
   public async delete(req: Request, res: Response): Promise<Response> {
-    const { clientContact_id } = req.params;
+    const { id } = req.params;
 
     const deletedClient = container.resolve(DeleteClientContactService);
 
     await deletedClient.execute({
-      clientContact_id,
+      id,
     });
 
     return res.json();

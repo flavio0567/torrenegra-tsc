@@ -8,7 +8,7 @@ import Contact from '@modules/clients/infra/typeorm/entities/Contact';
 class FakeClientContactsRepository implements IClientContactsRepository {
   private clientContacts: Contact[] = [];
 
-  public async findAllContacts(): Promise<Contact[] | undefined> {
+  public async findAllClientContacts(): Promise<Contact[] | undefined> {
     const { clientContacts } = this;
 
     return clientContacts;

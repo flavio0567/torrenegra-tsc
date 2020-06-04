@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { celebrate, Joi, Segments } from 'celebrate';
 
 import UsersRepository from '@modules/users/infra/typeorm/repositories/UsersRepository';
-import ensureAuthenticated from '../middleware/ensureAuthenticated';
+import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 
 import UsersController from '../controllers/UsersController';
 

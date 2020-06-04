@@ -12,7 +12,7 @@ class ClientContactsRepository implements IClientContactsRepository {
     this.ormRepository = getRepository(Contact);
   }
 
-  public async findAllContacts(): Promise<Contact[] | undefined> {
+  public async findAllClientContacts(): Promise<Contact[] | undefined> {
     const contacts = await this.ormRepository.find();
 
     return contacts || undefined;

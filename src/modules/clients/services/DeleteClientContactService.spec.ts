@@ -50,7 +50,7 @@ describe('DeleteClientContactService', () => {
     });
 
     const deletedClientContact = await deleteClientContact.execute({
-      clientContact_id: clientContact.id,
+      id: clientContact.id,
     });
 
     expect(createContact).toHaveBeenCalledWith({
@@ -67,7 +67,7 @@ describe('DeleteClientContactService', () => {
   it('should not be able to Delete a non-existing client contact', async () => {
     await expect(
       deleteClientContact.execute({
-        clientContact_id: 'non-existing-contact',
+        id: 'non-existing-contact',
       })
     ).rejects.toBeInstanceOf(AppError);
   });

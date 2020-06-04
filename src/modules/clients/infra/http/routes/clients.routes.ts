@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { celebrate, Joi, Segments } from 'celebrate';
 
 import ClientsRepository from '@modules/clients/infra/typeorm/repositories/ClientsRepository';
-import ensureAuthenticated from '@modules/users/infra/http/middleware/ensureAuthenticated';
+import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
 
 import ClientsController from '../controllers/ClientsController';
 

@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { celebrate, Joi, Segments } from 'celebrate';
 
 import ProjectsRepository from '@modules/projects/infra/typeorm/repositories/ProjectsRepository';
-import ensureAuthenticated from '@modules/users/infra/http/middleware/ensureAuthenticated';
+import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
 
 import ProjectsController from '../controllers/ProjectsController';
 

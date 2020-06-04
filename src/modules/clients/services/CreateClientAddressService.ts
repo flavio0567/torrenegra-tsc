@@ -15,7 +15,7 @@ interface IRequest {
 @injectable()
 class CreateClientAddressService {
   constructor(
-    @inject('ClientContactsRepository')
+    @inject('ClientAddressesRepository')
     private clientAddressesRepository: IClientAddressesRepository
   ) {}
 

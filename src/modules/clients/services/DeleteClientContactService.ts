@@ -4,7 +4,7 @@ import AppError from '@shared/errors/AppError';
 import IClientContactsRepository from '../repositories/IClientContactsRepository';
 
 interface IRequest {
-  clientContact_id: string;
+  id: string;
 }
 
 @injectable()
@@ -14,16 +14,14 @@ class DeleteClientContactService {
     private clientContactsRepository: IClientContactsRepository
   ) {}
 
-  public async execute({ clientContact_id }: IRequest): Promise<void> {
-    const clientContact = await this.clientContactsRepository.findById(
-      clientContact_id
-    );
+  public async execute({ id }: IRequest): Promise<void> {
+    const clientContact = await this.clientContactsRepository.findById(id);
 
     if (!clientContact) {
       throw new AppError('Client contact not found.');
     }
 
-    await this.clientContactsRepository.delete(clientContact_id);
+    await this.clientContactsRepository.delete(id);
   }
 }
 

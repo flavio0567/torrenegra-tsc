@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { celebrate, Joi, Segments } from 'celebrate';
 
 import AppointmentsRepository from '@modules/appointments/infra/typeorm/repositories/AppointmentsRepository';
-import ensureAuthenticated from '@modules/users/infra/http/middleware/ensureAuthenticated';
+import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
 import AppointmentsController from '../controllers/AppointmentsController';
 
 const appointmentsRouter = Router();

@@ -14,6 +14,14 @@ class FakeAppointmentsRepository implements IAppointmentsRepository {
     return appointments;
   }
 
+  public async findById(id: string): Promise<Appointment | undefined> {
+    const findAppointment = await this.appointments.find(
+      appointment => appointment.id === id
+    );
+
+    return findAppointment;
+  }
+
   public async create({
     project_id,
     provider_id,
